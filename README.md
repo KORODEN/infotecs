@@ -1,3 +1,1 @@
-# infotecs
-
-JS test task
+# Приложение
