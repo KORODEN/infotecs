@@ -1,6 +1,4 @@
 import { create } from '../../../utils/index.js'
-import { drawProductsList } from '../../../start.js'
-import { pageState, setState } from '../../../state.js'
 import {
     DEFAULT_VALUE,
     INEXPENSIVE_TO_EXPENSIVE_VALUE,
@@ -8,6 +6,8 @@ import {
     BEST_RATING_VALUE,
     DISCOUNT_VALUE,
 } from '../../../constants.js'
+import { sortingTypeUpdateAction } from '../../../store/actions.js'
+import { store } from '../../../store/store.js'
 
 export const Select = () => {
     const select = create({
@@ -23,13 +23,8 @@ export const Select = () => {
     })
 
     select.addEventListener('change', () => {
-        if (Object.entries(pageState).length) {
-            setState('sortingType', select.value)
-            drawProductsList()
-        }
+        store.dispatch(sortingTypeUpdateAction(select.value))
     })
-
-    select.dispatchEvent(new Event('change'))
 
     return select
 }

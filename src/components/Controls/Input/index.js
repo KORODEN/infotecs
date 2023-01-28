@@ -43,5 +43,9 @@ export const Input = () => {
 
     input.addEventListener('input', validation)
 
+    input.addEventListener('click', event => {
+        event.target.select()
+    })
+
     return input
 }
